@@ -1,14 +1,20 @@
 import 'package:cadastro_de_empresas/address.dart';
 import 'package:cadastro_de_empresas/company.dart';
 import 'package:cadastro_de_empresas/partner.dart';
+import 'package:uuid/uuid.dart';
 
 
 void main(List<String> arguments) {
   final company1Address = Address("Avenida Antartica", "1891", "NA","Jaguariuna", "São Paulo", "13918000");
   final registration1Time = DateTime.now();
-  Company company1 = Company("uuid", "Ambev", "Ambev.SA", "07526557000100", company1Address, "1933136000", registration1Time, "partner");
+
+  var uuids = Uuid().v1();
+  
+
+  Company company1 = Company(uuids, "Ambev", "Ambev.SA", "07526557000100", company1Address, "1933136000", registration1Time, "partner");
   print(company1.companyName);
   print(company1.address.zipCode);
+  print(company1.uuid);
 
   final partner1Adress = Address("Rua Dominical", "32", "NA", "Ourinhos", "São Paulo", "13918003");
 
@@ -16,3 +22,5 @@ void main(List<String> arguments) {
   print(partner1.address.street);
   
 }
+
+
