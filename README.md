@@ -1,2 +1,2 @@
-# cadastro_de_empresas
-Sistema para cadastro de empresas aplicando conceitos de POO
+A sample command-line application with an entrypoint in `bin/`, library code
+in `lib/`, and example unit test in `test/`.
