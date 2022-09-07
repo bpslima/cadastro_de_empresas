@@ -1,6 +1,6 @@
 
 
-class Address{
+abstract class Address{
   //Attributes:
   String street;
   String number;

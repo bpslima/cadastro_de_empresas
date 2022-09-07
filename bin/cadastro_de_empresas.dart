@@ -1,6 +1,8 @@
 import 'package:cadastro_de_empresas/address.dart';
 import 'package:cadastro_de_empresas/company.dart';
+import 'package:cadastro_de_empresas/legalPerson.dart';
 import 'package:cadastro_de_empresas/partner.dart';
+import 'package:cadastro_de_empresas/people.dart';
 import 'package:uuid/uuid.dart';
 
 
@@ -15,11 +17,17 @@ void main(List<String> arguments) {
   print(company1.companyName);
   print(company1.address.zipCode);
   print(company1.uuid);
-
+/*
   final partner1Adress = Address("Rua Dominical", "32", "NA", "Ourinhos", "São Paulo", "13918003");
 
   Partner partner1 = Partner("Pepsico", "Pepsico SA", "07526545000100" , "J", partner1Adress);
   print(partner1.address.street);
+*/
+  //final partner1Adress = Address("Rua Dominical", "32", "NA", "Ourinhos", "São Paulo", "13918003");
+
+  LegalPerson partner1 = LegalPerson("Rua Dominical", "38", "NA", "Ourinhos", "São Paulo", "13918003", "Globo Civil", "6752654000100", "Globo SA");
+  print(partner1.tradeName);
+
   
 }
 
