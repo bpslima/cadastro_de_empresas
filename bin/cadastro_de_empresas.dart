@@ -1,22 +1,44 @@
+//import 'package:cadastro_de_empresas/address.dart';
+//import 'package:cadastro_de_empresas/address.dart';
 import 'package:cadastro_de_empresas/address.dart';
 import 'package:cadastro_de_empresas/company.dart';
 import 'package:cadastro_de_empresas/legalPerson.dart';
 import 'package:cadastro_de_empresas/partner.dart';
-import 'package:cadastro_de_empresas/people.dart';
+//import 'package:cadastro_de_empresas/partner.dart';
 import 'package:uuid/uuid.dart';
 
 
 void main(List<String> arguments) {
-  final company1Address = Address("Avenida Antartica", "1891", "NA","Jaguariuna", "São Paulo", "13918000");
-  final registration1Time = DateTime.now();
+ 
 
   var uuids = Uuid().v1();
+  //String partner1 = LegalPerson("Globo construtora", "1933136870", "Globo construtora SA", "Rua Ourinhos", "180", "NA", "São Paulo", "São Paulo", "13945670") as String;
+  
+  //final company1Address = Address("Avenida Antartica", "1891", "NA","Jaguariuna", "São Paulo", "13918000");
+  final registration1Time = DateTime.now();
+  final partner1Address = Address("Rua Dominical", "32", "NA", "Ourinhos", "São Paulo", "13918003");
+  //final partner1Partner = Partner(partner1Address);
+
+  
+  
+  Partner partner1 = LegalPerson("Globo Civil", "12345678904683", "Globo SA", partner1Address);
+ 
+  Company company1 = Company(uuids,"Ambev", "Ambev SA", "12345678903", "1934569056", registration1Time, "Avenida Antartica", "1891", "NA","Jaguariuna", "São Paulo", "13918000", partner1);
+ 
+  print(company1.companyName);
+  (company1.partner.address.zipCode).showZipCode();
+
+ 
+  
+  
   
 
-  Company company1 = Company(uuids, "Ambev", "Ambev.SA", "07526557000100", company1Address, "1933136000", registration1Time, "partner");
-  print(company1.companyName);
-  print(company1.address.zipCode);
-  print(company1.uuid);
+
+
+  
+
+  
+  
 /*
   final partner1Adress = Address("Rua Dominical", "32", "NA", "Ourinhos", "São Paulo", "13918003");
 
@@ -25,8 +47,7 @@ void main(List<String> arguments) {
 */
   //final partner1Adress = Address("Rua Dominical", "32", "NA", "Ourinhos", "São Paulo", "13918003");
 
-  LegalPerson partner1 = LegalPerson("Rua Dominical", "38", "NA", "Ourinhos", "São Paulo", "13918003", "Globo Civil", "6752654000100", "Globo SA");
-  print(partner1.tradeName);
+
 
   
 }

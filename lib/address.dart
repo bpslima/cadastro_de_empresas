@@ -1,10 +1,10 @@
 
 
-abstract class Address{
+class Address{
   //Attributes:
   String street;
   String number;
-  String? complement;
+  String complement;
   String district;
   String state;
   String zipCode;
@@ -18,6 +18,17 @@ abstract class Address{
     this.state,
     this.zipCode,
   );
+
+   String showZipCode(){
+    if(zipCode.length==8){
+       return('${zipCode.substring(0, 5)}-${zipCode.substring(5, 8)}');
+    }
+    return "CEP inválido";
+  }
+
+  void printarcep(){
+    print(' ${showZipCode()}');
+  }
 
 
 

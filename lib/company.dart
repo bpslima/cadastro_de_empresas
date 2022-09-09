@@ -1,15 +1,16 @@
 import 'package:cadastro_de_empresas/address.dart';
+import 'package:cadastro_de_empresas/partner.dart';
 
-class Company{
+class Company extends Address {
   //attributes:
   String uuid;
   String companyName;
   String tradeName;
   String registrationNumber;
-  Address address;              //Call the Adress class
   String phone;
   DateTime registrationTime;
-  String partner;
+  //Address address;
+  Partner partner;
 
   //constructor:
   Company(
@@ -17,16 +18,20 @@ class Company{
   this.companyName,
   this.tradeName,
   this.registrationNumber,
-  this.address,
   this.phone,
   this.registrationTime,
+  //this.address,
+  super.street,
+  super.number,
+  super.complement,
+  super.district,
+  super.state,
+  super.zipCode,
   this.partner,
 
-  //methods:
-  //void registerCompany(){
-  //  print
- // }
   );
+
+ 
 
 
   
