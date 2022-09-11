@@ -1,7 +1,7 @@
 import 'package:cadastro_de_empresas/address.dart';
 import 'package:cadastro_de_empresas/partner.dart';
 
-class Company extends Address {
+class Company  {
   //attributes:
   String uuid;
   String companyName;
@@ -9,8 +9,9 @@ class Company extends Address {
   String registrationNumber;
   String phone;
   DateTime registrationTime;
-  //Address address;
+  Address address;
   Partner partner;
+  
 
   //constructor:
   Company(
@@ -21,18 +22,17 @@ class Company extends Address {
   this.phone,
   this.registrationTime,
   //this.address,
-  super.street,
-  super.number,
-  super.complement,
-  super.district,
-  super.state,
-  super.zipCode,
+  this.address,
   this.partner,
 
   );
+/*
+  void remove(String removendo) {}
 
- 
+  void add(String adicionando) {}
+*/                             
 
+}
 
   
 
@@ -41,8 +41,6 @@ class Company extends Address {
 
 
 
-
-}
 
 
 // ID, Razão Social, Nome Fantasia, CNPJ, Endereço (Logradouro, Número, Complemento, Bairro, Estado e CEP), Telefone, Horário do Cadastro e Sócio

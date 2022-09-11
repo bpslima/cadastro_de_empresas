@@ -1,55 +1,82 @@
-//import 'package:cadastro_de_empresas/address.dart';
-//import 'package:cadastro_de_empresas/address.dart';
+
+import 'dart:io';
 import 'package:cadastro_de_empresas/address.dart';
 import 'package:cadastro_de_empresas/company.dart';
-import 'package:cadastro_de_empresas/legalPerson.dart';
-import 'package:cadastro_de_empresas/partner.dart';
-//import 'package:cadastro_de_empresas/partner.dart';
+import 'package:cadastro_de_empresas/dataBase.dart';
 import 'package:uuid/uuid.dart';
-
-
 void main(List<String> arguments) {
  
+int options = 5;
+ Database db = Database();
 
-  var uuids = Uuid().v1();
-  //String partner1 = LegalPerson("Globo construtora", "1933136870", "Globo construtora SA", "Rua Ourinhos", "180", "NA", "São Paulo", "São Paulo", "13945670") as String;
+do {
+  print('1 - To Register a company.'); //add na lista
+  print('2 - To Search registrated company by registration number.');
+  print('3 - To Search registrated company by Partner registration number.');
+  print('4 - To List Companies registered in alphabetical order (based on Corporate Trade).'); //print a lista
+  print('5 - To delete a company(by ID).'); //remove na lista
+  print('6 - To leave.');
   
-  //final company1Address = Address("Avenida Antartica", "1891", "NA","Jaguariuna", "São Paulo", "13918000");
-  final registration1Time = DateTime.now();
-  final partner1Address = Address("Rua Dominical", "32", "NA", "Ourinhos", "São Paulo", "13918003");
-  //final partner1Partner = Partner(partner1Address);
+  int options = int.parse(stdin.readLineSync()!);
+  if (options == 0){
+    print('Finished operation.');
+    break;
+  }
+      switch(options){
+        case 1:
+        db.insertCompany();
+        break;
+        case 2:
+       
+        break;
+        case 3:
+      
+        break;
+        case 4:
+        
+        break;
+        case 5:
 
-  
-  
-  Partner partner1 = LegalPerson("Globo Civil", "12345678904683", "Globo SA", partner1Address);
- 
-  Company company1 = Company(uuids,"Ambev", "Ambev SA", "12345678903", "1934569056", registration1Time, "Avenida Antartica", "1891", "NA","Jaguariuna", "São Paulo", "13918000", partner1);
- 
-  print(company1.companyName);
-  (company1.partner.address.zipCode).showZipCode();
-
- 
-  
-  
-  
-
-
-
-  
-
-  
-  
+        break;
+        default:
+        print('Digito inválido. Informe um número válido.');
+      }
+} while (options != 0);
 /*
-  final partner1Adress = Address("Rua Dominical", "32", "NA", "Ourinhos", "São Paulo", "13918003");
+final ambev = Company(
+      Uuid().v1(),
+      'AMBEV',
+      'AMBEV COMMERCIAL',
+      '16391051000121',
+      Address(
+          'Esmeralda', 120, 'casa', 'Dom Pedro II', 'São Paulo', '12232883'),
+      '12982171717',
+      DateTime.now(),
+      LegalPerson(
+          'COCA-COLA',
+          'COCA-COLA COMMERCIAL',
+          '73923457000141',
+          Address('AMETISTA', 35, '', 'Bosque dos Eucaliptos', 'São Paulo',
+              '12458995'),
+          'J'));
 
-  Partner partner1 = Partner("Pepsico", "Pepsico SA", "07526545000100" , "J", partner1Adress);
-  print(partner1.address.street);
+  final magalu = Company(
+      Uuid().v1(),
+      'MAGALU',
+      'MAGALU COMMERCIAL',
+      '31818594000176',
+      Address('street', 170, 'complement', 'neighborhood', 'state', 'zipCode'),
+      'phoneNumber',
+      DateTime.now(),
+      NaturalPerson(
+          'TAMIRES',
+          '42142142111',
+          Address(
+              'street', 120, 'complement', 'neighborhood', 'state', 'zipCode'),
+          'F'));
+
+db.createCompany(company1)
 */
-  //final partner1Adress = Address("Rua Dominical", "32", "NA", "Ourinhos", "São Paulo", "13918003");
-
-
-
-  
 }
 
 

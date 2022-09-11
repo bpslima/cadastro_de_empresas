@@ -1,24 +1,31 @@
 
-import 'package:cadastro_de_empresas/address.dart';
 
-class NaturalPerson extends Address{
-  String name;
-  String cpf;
+import 'package:cadastro_de_empresas/partner.dart';
+
+class NaturalPerson extends Partner{
+
+ 
   
 
   
 
   NaturalPerson(
-    this.name,
-    this.cpf,
-    super.street,
-    super.number,
-    super.complement,
-    super.district,
-    super.state,
-    super.zipCode,
+    super.name,
+    super.registrationNumber,
+    super.address,
+    super.partnerType,
+    
     
   
   );
-    
+/*
+  String showCpf(){
+    if(cpf.length==11){
+       return('${cpf.substring(0, 3)}.${cpf.substring(3, 6)}.${cpf.substring(6, 9)}-$cpf.substring(9, 11)}');
+    }
+  return "invalid CPF";
+  }
+  */
 }
+
+    

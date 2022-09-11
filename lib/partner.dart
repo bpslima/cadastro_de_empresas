@@ -1,20 +1,49 @@
 
+
+
 import 'package:cadastro_de_empresas/address.dart';
 
 
-class Partner {
-  //Attributes:
-  Address address;
 
+
+abstract class Partner {
+  //Attributes:
+
+  String name;
+  String registrationNumber;
+  Address address;
+  String partnerType;
+  
+  
+
+  
 
 
   //Constructor:
   Partner(
-   this.address,
 
-  );
+    this.name, 
+    this.registrationNumber,
+    this.address, 
+    this.partnerType,
+
+   
+);
+
+  Object? get tradeName => null;  //se existir, ele retorna, se não, dá nulo
 
 
 
 }
+
+
+
+
+  
+
+  
+
+
+
+
 

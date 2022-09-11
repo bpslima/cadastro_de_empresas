@@ -19,6 +19,8 @@ class Address{
     this.zipCode,
   );
 
+ 
+
    String showZipCode(){
     if(zipCode.length==8){
        return('${zipCode.substring(0, 5)}-${zipCode.substring(5, 8)}');
@@ -26,9 +28,7 @@ class Address{
     return "CEP inválido";
   }
 
-  void printarcep(){
-    print(' ${showZipCode()}');
-  }
+  
 
 
 
