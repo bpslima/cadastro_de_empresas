@@ -3,29 +3,40 @@ import 'package:cadastro_de_empresas/partner.dart';
 
 class Company  {
   //attributes:
-  String uuid;
+  
   String companyName;
   String tradeName;
   String registrationNumber;
   String phone;
-  DateTime registrationTime;
   Address address;
   Partner partner;
+  DateTime registrationTime;
+  String uuid;
   
 
   //constructor:
   Company(
-  this.uuid,
+  
   this.companyName,
   this.tradeName,
   this.registrationNumber,
   this.phone,
-  this.registrationTime,
-  //this.address,
   this.address,
   this.partner,
+  this.registrationTime,
+  this.uuid,
 
   );
+
+get getAddress{
+  return address;
+}
+
+  get addressCompany => null;
+
+
+
+ // void sort(Function(dynamic a, dynamic b) param0) {}
 /*
   void remove(String removendo) {}
 

@@ -27,17 +27,17 @@ do {
         db.insertCompany();
         break;
         case 2:
-       
+        db.searchCompByRegistNumber();
         break;
         case 3:
-      
+        db.searchPartByRegistNumber();
         break;
         case 4:
-        
+        db.getCompaniesOrderByTradeName();
         break;
-        case 5:
-
-        break;
+       // case 5:
+       // db.removeCompany(company);
+       // break;
         default:
         print('Digito inválido. Informe um número válido.');
       }

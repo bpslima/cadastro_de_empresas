@@ -8,11 +8,11 @@ import 'package:cadastro_de_empresas/address.dart';
 
 abstract class Partner {
   //Attributes:
-
+  String partnerType;
   String name;
   String registrationNumber;
   Address address;
-  String partnerType;
+  
   
   
 
@@ -21,11 +21,11 @@ abstract class Partner {
 
   //Constructor:
   Partner(
-
+    this.partnerType,
     this.name, 
     this.registrationNumber,
     this.address, 
-    this.partnerType,
+   
 
    
 );
