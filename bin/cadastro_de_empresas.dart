@@ -33,11 +33,11 @@ do {
         db.searchPartByRegistNumber();
         break;
         case 4:
-        db.getCompaniesOrderByTradeName();
+        db.getCompaniesOrderByCompanyName();
         break;
-       // case 5:
-       // db.removeCompany(company);
-       // break;
+        case 5:
+        db.removeCompanyID();
+        break;
         default:
         print('Digito inválido. Informe um número válido.');
       }
