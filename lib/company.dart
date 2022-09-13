@@ -16,34 +16,31 @@ class Company  {
 
   //constructor:
   Company(
-  
+
+  this.uuid,
+  this.registrationNumber,
   this.companyName,
   this.tradeName,
-  this.registrationNumber,
   this.phone,
   this.address,
   this.partner,
   this.registrationTime,
-  this.uuid,
+  
 
   );
 
-get getAddress{
-  return address;
+                           
+
+String showRegistNumberCompany(){
+    if(registrationNumber.length==14){
+       return('${registrationNumber.substring(0, 2)}.${registrationNumber.substring(2, 5)}.${registrationNumber.substring(5, 8)}/${registrationNumber.substring(8, 12)}-${registrationNumber.substring(12, 14)}');
+    } else {
+     return "invalid registration number";
+  }
+}
 }
 
-  get addressCompany => null;
 
-
-
- // void sort(Function(dynamic a, dynamic b) param0) {}
-/*
-  void remove(String removendo) {}
-
-  void add(String adicionando) {}
-*/                             
-
-}
 
   
 

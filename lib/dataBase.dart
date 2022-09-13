@@ -17,9 +17,9 @@ class Database {
     String companyName = stdin.readLineSync()!;
     print('Enter the tradename of the company to be add:');
     String tradeName = stdin.readLineSync()!;
-    print('Enter the regustration Number of the company to be add:');
+    print('Enter the registration Number of the company to be add:');
     String registrationNumber = stdin.readLineSync()!;
-    print('Enter the phone number of the company to be add:');
+    print('Enter the phone number of the company to be add:'); 
     String phone = stdin.readLineSync()!;
     print('Enter the address of the company to be add.');
     print('Enter the street of the company to be add:');
@@ -35,16 +35,30 @@ class Database {
     print('Enter the Zip Code of the company address :');
     String zipCode = stdin.readLineSync()!;
 
+    
+     
+
     Address addressCompany =
         Address(street, number, complement, district, state, zipCode);
+        
+       
 
     final registrationTime = DateTime.now();
 
+    
+
     //Partner:
+    Partner partner;
+    String partnerTradeName = '';
+     
+    print('Enter the type of the partner. Write N to Natural Person or L to Legal Person:');
+    String partnerType = stdin.readLineSync()!;
     print('Enter the name of the partner:');
     String partnerName = stdin.readLineSync()!;
-    print('Enter the trade name of the company to be add:');
-    String partnerTradeName = stdin.readLineSync()!;
+       if (partnerType == 'L') {
+         print('Enter the trade name of the company to be add:');
+         partnerTradeName = stdin.readLineSync()!;
+       }
     print('Enter the registration number of the partner:');
     String partnerRegistrationNumber = stdin.readLineSync()!;
     print('Enter the street  of the partner:');
@@ -59,25 +73,19 @@ class Database {
     String partnerState = stdin.readLineSync()!;
     print('Enter the zip code  of the partner:');
     String partnerZipCode = stdin.readLineSync()!;
-    print(
-        'Enter the type of the partner. Write N to Natural Person or L to Legal Person:');
-    String partnerType = stdin.readLineSync()!;
-
-    Address addressPartner = Address(partnerStreet, partnerNumber,
+    
+   Address addressPartner = Address(partnerStreet, partnerNumber,
         partnerComplement, partnerDistrict, partnerState, partnerZipCode);
 
-    Partner partner;
-
-    if (partnerType == 'N') {
-      partner = NaturalPerson(
-          partnerType, partnerName, partnerRegistrationNumber, addressPartner);
-    } else {
-      partner = LegalPerson(partnerType, partnerName, partnerTradeName,
-          partnerRegistrationNumber, addressPartner);
+    if (partnerType == "L"){
+      partner = LegalPerson(partnerName, partnerTradeName, partnerRegistrationNumber, partnerType, addressPartner);
+    } else{
+    partner = NaturalPerson(partnerName, registrationNumber, partnerType, addressPartner);
     }
+    
 
-    Company company = Company(companyName, tradeName, registrationNumber, phone,
-        addressCompany, partner, registrationTime, uuid);
+    Company company = Company(uuid, registrationNumber, companyName, tradeName, phone,
+        addressCompany, partner, registrationTime, );
 
     companies.add(company);
   }
@@ -88,26 +96,23 @@ class Database {
   }
 
   
-//
   dynamic printCompany(Company company) {
     print('Companies registrated:');
-    return ('''Dados da empresa: \n Name: ${company.companyName} \n Trade Name: ${company.tradeName} \n
-    Registration number: ${company.registrationNumber} Phone number: ${company.phone} \n
-    Adress of company: ${company.address.street}. ${company.address.number}, ${company.address.complement}, ${company.address.district}, 
-    ${company.address.state}, ${company.address.zipCode} \n
-    Registration time: ${company.registrationTime}, \n ID: ${company.uuid}''');
+    return ('''Company registration: \n ID: ${company.uuid} \n Registration number: ${company.showRegistNumberCompany()} \n Name: ${company.companyName} \n Trade Name: ${company.tradeName}
+    Phone number: ${company.phone} \n Adress of company: ${company.address.street}. ${company.address.number}, ${company.address.complement}, ${company.address.district}, 
+    ${company.address.state}, ${company.address.showZipCode()}. \n Partner:\n Type of the person: ${company.partner.partnerType} \n Registration Number:  ${company.partner.showRegistrationNumber()}
+    \n Name: ${company.partner.name} \n ${company.partner.partnerType == 'L'? 'Trade Name: ${company.partner.tradeName}':''} \n Adress of partner: ${company.address.street}, ${company.address.number}, ${company.address.complement}, ${company.address.district}, ${company.address.state}, ${company.address.showZipCode()} \n Registration time: ${company.registrationTime}''');
+     
   }
 //
   void searchCompByRegistNumber() {
     print('Enter the registration number to find the company:');
     String searchRegistNumCompany = stdin.readLineSync()!;
     final company = companies.firstWhere(
-        (element) => element.registrationNumber == searchRegistNumCompany);
-    print('''Dados da empresa: \n Name: ${company.companyName} \n Trade Name: ${company.tradeName} \n
-    Registration number: ${company.registrationNumber} Phone number: ${company.phone} \n
-    Adress of company: ${company.address.street}. ${company.address.number}, ${company.address.complement}, ${company.address.district}, 
-    ${company.address.state}, ${company.address.zipCode} \n
-    Registration time: ${company.registrationTime}, \n ID: ${company.uuid}''');
+    (element) => element.registrationNumber == searchRegistNumCompany);
+    print('''Company registration: \n ID: ${company.uuid} \n Registration number: ${company.showRegistNumberCompany} \n Name: ${company.companyName} \n Trade Name: ${company.tradeName} \n
+    Phone number: ${company.phone} \n Adress of company: ${company.address.street}. ${company.address.number}, ${company.address.complement}, ${company.address.district}, 
+    ${company.address.state}, ${company.address.showZipCode()} \n Registration time: ${company.registrationTime} ''');
   }
 
   void searchPartByRegistNumber() {
@@ -116,31 +121,34 @@ class Database {
 
     final partner = companies.firstWhere((element) =>
         element.partner.registrationNumber == searchPartRegistNumCompany);
-   print('''Dados da empresa: \n Name: ${partner.companyName} \n Trade Name: ${partner.tradeName} \n
-    Registration number: ${partner.registrationNumber} Phone number: ${partner.phone} \n
-    Adress of partner: ${partner.address.street}. ${partner.address.number}, ${partner.address.complement}, ${partner.address.district}, 
-    ${partner.address.state}, ${partner.address.zipCode} \n
-    Registration time: ${partner.registrationTime}, \n ID: ${partner.uuid}''');
+    print('''Company registration: \n ID: ${partner.uuid} \n Registration number: ${partner.showRegistNumberCompany()} \n Name: ${partner.companyName} \n Trade Name: ${partner.tradeName}
+    Phone number: ${partner.phone} \n Address of company: ${partner.address.street}. ${partner.address.number}, ${partner.address.complement}, ${partner.address.district}, 
+    ${partner.address.state}, ${partner.address.showZipCode()} \n Partner: \n Type of the person: ${partner.partner.partnerType} \n Registration Number:  ${partner.partner.showRegistrationNumber()}
+    Name: ${partner.partner.name} \n ${partner.partner.partnerType == 'L'? 'Trade Name: ${partner.partner.tradeName}':''} \n Adress of partner: ${partner.address.street}.
+    ${partner.address.number}, ${partner.address.complement}, ${partner.address.district}, ${partner.address.state}, ${partner.address.showZipCode()} \n Registration time: ${partner.registrationTime} ''');
 
   }
 
   void getCompaniesOrderByCompanyName() {
      for(var i = 0; i < companies.length; i++){
       companies.sort((a, b) => a.companyName.compareTo(b.companyName));
-      print('''Cadastro das empresas por ordem alfabética: \n Name: ${companies[i].companyName} \n Trade Name: ${companies[i].tradeName} \n
-    Registration number: ${companies[i].registrationNumber} Phone number: ${companies[i].phone} \n
-    Adress of companies: ${companies[i].address.street}. ${companies[i].address.number}, ${companies[i].address.complement}, ${companies[i].address.district}, 
-    ${companies[i].address.state}, ${companies[i].address.zipCode} \n
-    Registration time: ${companies[i].registrationTime}, \n ID: ${companies[i].uuid}''');
+      print('''List of companies sorted in alphabetical order(By Company Name): \n ID: ${companies[i].uuid} \n Registration number: ${companies[i].showRegistNumberCompany()} \n Name: ${companies[i].companyName} \n Trade Name: ${companies[i].tradeName} 
+      Phone number: ${companies[i].phone} \n Adress of companies: \n ${companies[i].address.street}. ${companies[i].address.number}, ${companies[i].address.complement}, ${companies[i].address.district}, ${companies[i].address.state}, ${companies[i].address.showZipCode()}
+      Partner: \n Registration Number:  ${companies[i].partner.showRegistrationNumber()} \n Name: ${companies[i].partner.name} \n ${companies[i].partner.partnerType == 'L'? 'Trade Name: ${companies[i].partner.tradeName}':''} 
+      Adress of partner: ${companies[i].address.street}. ${companies[i].address.number}, ${companies[i].address.complement}, ${companies[i].address.district}, ${companies[i].address.state}, ${companies[i].address.showZipCode()} 
+      Registration time: ${companies[i].registrationTime}''');
+    
+    }
+
   }
 
-     }
+
  dynamic removeCompanyID() {
-  print('Insira o ID da empresa a ser excluída:');
+  print('Enter with the ID to delete a registration company:');
   String byID = stdin.readLineSync()!;
     final company = companies.firstWhere((element) =>
         element.uuid == byID);
-        print(' A empresa ${company.companyName} foi excluída com sucesso.');
+        print(' The company ${company.companyName} was successfully deleted.');
         return companies.remove(company);
 
 
@@ -150,19 +158,3 @@ class Database {
 
 
        
-/*
-
-List<String> removeCompany() {
-  print('Enter the name of the company to be delete:');
-  String removendo = stdin.readLineSync()!;
-  companies.remove(removendo);
-  return [];
-
-}
-
-void printCompany(List<String> lista) {
-  print('Companies registrated:');
-  for(var i = 0; i < lista.length; i++){
-  print(lista[i]);
-  }
-*/

@@ -29,7 +29,7 @@ class Address{
     if(zipCode.length==8){
        return('${zipCode.substring(0, 5)}-${zipCode.substring(5, 8)}');
     }
-    return "CEP inválido";
+    return "Invalid Zip Code";
   }
 
   
