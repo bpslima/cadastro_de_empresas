@@ -11,7 +11,7 @@ class Company  {
   Address address;
   Partner partner;
   DateTime registrationTime;
-  String _uuid;
+  final String _uuid;
   
 
   //constructor:
@@ -40,27 +40,18 @@ String showRegistNumberCompany(){
 }
 dynamic showphone(){
   if(phone.length>=10){
-    return('(${phone.substring(0,2)})');
+    return('(${phone.substring(0,2)}) ${phone.substring(2, )}');
   } 
 }
 get uuid{
- return  _uuid;
-}
-dynamic nameFormatted(){
-   dynamic companyName = " ";
-   List <String> palavras = companyName.split(" ");
-   for (int i = 0; i < palavras.length; i++) {
-    palavras[i] = palavras[i][0].toUpperCase() + palavras[i].substring(1);
+ return _uuid;
 }
 
-return palavras.join(" ");
-
-   
+ 
 
 }
 
 
-}
 
 
 

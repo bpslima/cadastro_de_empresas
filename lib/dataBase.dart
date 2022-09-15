@@ -5,7 +5,7 @@ import 'package:cadastro_de_empresas/legalPerson.dart';
 import 'package:cadastro_de_empresas/naturalPerson.dart';
 import 'package:cadastro_de_empresas/partner.dart';
 import 'package:uuid/uuid.dart';
-import 'package:string_ext/string_ext.dart';
+
 
 
 
@@ -100,6 +100,7 @@ class Database {
 
     companies.add(company);
   }
+  
 
   void createCompany(Company company) {
     //para testar sem pedir pro usuario
@@ -108,10 +109,10 @@ class Database {
 
   
   dynamic printCompany(Company company) {
-   print('''Company registration: \n ID: ${company.uuid} \n Registration number: ${company.registrationNumber}\n name: ${company.nameFormatted()} \n Trade Name: ${company.tradeName}
-  Phone number: ${company.showphone()} \n Adress of company: ${company.address.street}, ${company.address.number}, ${company.address.complement}, ${company.address.district}, ${company.address.city}/${company.address.stateFormatted()}, ${company.address.showZipCode()}. 
-  Partner:\n Type of the person: ${company.partner.partnerType} \n Registration Number:  ${company.partner.showRegistrationNumber()} \n Name: ${company.partner.name} \n ${company.partner.partnerType == 'L'? 'Trade Name: ${company.partner.tradeName}':''} \n Adress of partner: ${company.address.street}, ${company.address.number}, ${company.address.complement}, ${company.address.district}, ${company.address.state}, ${company.address.showZipCode()}
-  Registration time: ${company.registrationTime}''');
+   print('''ID: ${company.uuid} \n Registration number: ${company.registrationNumber}\n name: ${company.companyName} \n Trade Name: ${company.tradeName} \n Phone number: ${company.showphone()}
+   Adress of company: ${company.address.street}, ${company.address.number}, ${company.address.complement}, ${company.address.district}, ${company.address.city}/${company.address.stateFormatted()}, ${company.address.showZipCode()}. 
+   Partner:\n Type of the person: ${company.partner.partnerType} \n Registration Number: ${company.partner.showRegistrationNumber()} \n Name: ${company.partner.name} \n Type of person: ${company.partner.partnerType == 'L'? 'Legal Person': 'Natural Person'} \n 'Trade Name: ${company.partner.tradeName} \n Adress of partner: ${company.partner.address.street}, ${company.partner.address.number}, ${company.partner.address.complement}, ${company.partner.address.district}, ${company.partner.address.city}/${company.partner.address.stateFormatted()}, ${company.partner.address.showZipCode()}
+   Registration time: ${company.registrationTime}''');
      
   }
 //
@@ -154,7 +155,6 @@ class Database {
 
 
   }
-
 
 
   

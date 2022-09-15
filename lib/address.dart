@@ -55,7 +55,7 @@ class Address{
         'SE',
         'TO'
       ];
-      state = initials.contains(state.toUpperCase())? state.toUpperCase() : '';
+      return state = initials.contains(state.toUpperCase())? state.toUpperCase() : '';
     } 
       switch (state) {
         case 'acre':
