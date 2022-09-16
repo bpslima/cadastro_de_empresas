@@ -91,10 +91,10 @@ class Database {
 
     if (partnerType == "L") {
       partner = LegalPerson(partnerName, partnerTradeName,
-          partnerRegistrationNumber, addressPartner, partnerType);
+          partnerRegistrationNumber, addressPartner, partnerType.toUpperCase());
     } else {
       partner = NaturalPerson(
-          partnerName, partnerRegistrationNumber, addressPartner, partnerType);
+          partnerName, partnerRegistrationNumber, addressPartner, partnerType.toUpperCase());
     } 
     
   
@@ -127,10 +127,10 @@ class Database {
     Address of company: 
     ${company.address.street}, ${company.address.number}, ${company.address.complement}, ${company.address.district},${company.address.city}/${company.address.state.toUpperCase()}, ${company.address.showZipCode()}
     Partner:
-    Type of person: ${company.partner.partnerType.toUpperCase() == 'L' ? 'Legal Person' : 'Natural Person'}
+    Type of person: ${company.partner.partnerType == 'L'|| company.partner.partnerType == 'l' ? 'Legal Person' : 'Natural Person'}
     Registration Number: ${company.partner.showRegistrationNumber()}
     Name: ${company.partner.name}
-    ${company.partner.tradeName != null ? 'Trade Name: ${company.partner.tradeName}\n' : ''}
+    Trade Name: ${company.partner.tradeName != null ? '${company.partner.tradeName}' : 'Not applicable'}
     Address of partner: 
     ${company.partner.address.street}, ${company.partner.address.number}, ${company.partner.address.complement}, ${company.partner.address.district}, ${company.partner.address.city}/${company.partner.address.state.toUpperCase()}, ${company.partner.address.showZipCode()} 
     ===================================================''');

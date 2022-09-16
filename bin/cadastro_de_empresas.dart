@@ -1,54 +1,12 @@
 
 
 import 'dart:io';
-/*
-import 'package:cadastro_de_empresas/address.dart';
-import 'package:cadastro_de_empresas/company.dart';
-*/
 import 'package:cadastro_de_empresas/dataBase.dart';
 
-/*
-import 'package:cadastro_de_empresas/legalPerson.dart';
-import 'package:cadastro_de_empresas/naturalPerson.dart';
-import 'package:uuid/uuid.dart';
-*/
 
 void main(List<String> arguments) {
   Database db = Database();
-/*
-  final ambev = Company(
-      Uuid().v1(),
-      'AMBEV',
-      'AMBEV COMMERCIAL',
-      '77777777777777',
-      '12982173707',
-      Address('Esmeralda Ambev', '120', 'casa', 'Dom Pedro II',
-          'São José dos Campos', 'São Paulo', '12232883'),
-      LegalPerson(
-          'COCA-COLA',
-          'COCA-COLA COMMERCIAL',
-          '99999999999999',
-          Address('Esmeralda Coca', '120', 'casa', 'Dom Pedro II',
-              'São José dos Campos', 'São Paulo', '12232883'),
-          'L'),
-      DateTime.now());
 
-  final magalu = Company(
-      Uuid().v1(),
-      'MAGALU',
-      'MAGALU COMMERCIAL',
-      '88888888888888',
-      '12982173707',
-      Address('Esmeralda Ambev', '120', 'casa', 'Dom Pedro II',
-          'São José dos Campos', 'São Paulo', '12232883'),
-      NaturalPerson(
-          'Beatriz',
-          '42142142142',
-          Address('Esmeralda Beatriz', '120', 'casa', 'Dom Pedro II',
-              'São José dos Campos', 'São Paulo', '12232883'),
-          'N'),
-      DateTime.now());
-*/
   int options = 100;
 
   do {
